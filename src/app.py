@@ -1,11 +1,15 @@
 from flask import Flask
+from flask import render_template
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
-    return '<h1>Hey there! I\'m using a Flask!</h1>'
+    context = {
+        'hello': 'Hello from FLASK.PY'
+    }
+    return render_template('index.html', context=context)
 
 
 @app.route('/home')
