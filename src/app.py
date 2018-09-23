@@ -6,6 +6,16 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    return render_template('project/index.html', title='Index page')
+
+
+@app.route('/add_comment')
+def add_comment():
+    return render_template('project/add_comment_form.html', title='Add comment page')
+
+
+@app.route('/example')
+def example():
     context = {
         'hello': 'Hello from FLASK.PY'
     }
