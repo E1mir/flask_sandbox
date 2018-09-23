@@ -9,7 +9,7 @@ def index():
     context = {
         'hello': 'Hello from FLASK.PY'
     }
-    return render_template('index.html', context=context)
+    return render_template('example/example.html', context=context)
 
 
 @app.route('/home')
@@ -19,7 +19,7 @@ def home():
 
 @app.route('/home/<string:place>')
 def home_place(place):
-    return '<h1>You are on the ' + place + '</h1>'
+    return f'<h1>You are on the {place}!</h1>'
 
 
 @app.route('/some_post', methods=['POST'])
