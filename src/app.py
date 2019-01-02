@@ -1,7 +1,7 @@
-from flask import render_template
+from flask import render_template, redirect, url_for
 from flask import request
 
-from app_conf import app
+from app_conf import app, db_session
 from models import Comment
 
 
@@ -48,7 +48,10 @@ def get_post_page():
 def process():
     name = request.form['name']
     comment = request.form['comment']
-    return f'Name is {name} and the comment is {comment}!'
+    signature = Comment(name=name, comment=comment)
+    db_session.add(signature)
+    db_session.commit()
+    return redirect(url_for('index'))
 
 
 if __name__ == '__main__':
