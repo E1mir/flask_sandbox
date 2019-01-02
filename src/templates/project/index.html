@@ -10,17 +10,20 @@
       <br>
       <a type="button" class="" href="{{ url_for('add_comment') }}">Leave comment in the Guest Book</a>
     </div>
+    {% if comments %}
+      {% for cm in comments %}
+        <div class="page-header">
+          <h2> {{ cm.name }}</h2>
+        </div>
+        <div class="well">
+          <p>
+            {{ cm.comment }}
+          </p>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h2 class="text-center">No comments!</h2>
+    {% endif %}
 
-    <div class="page-header">
-      <h2>Name</h2>
-    </div>
-    <div class="well">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet
-        non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel
-        scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo
-        luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed
-        consectetur.
-      </p>
-    </div>
   </div>
 {% endblock %}
