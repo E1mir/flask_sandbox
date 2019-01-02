@@ -1,17 +1,18 @@
 from flask import Flask
 from flask import render_template
+from flask import request
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
-    return render_template('project/index.html', title='Index page')
+    return render_template('project/index.html', title='Index page', page='index')
 
 
 @app.route('/add_comment')
 def add_comment():
-    return render_template('project/add_comment_form.html', title='Add comment page')
+    return render_template('project/add_comment_form.html', title='Add comment page', page='add_comment')
 
 
 @app.route('/example')
@@ -40,6 +41,13 @@ def post_request():
 @app.route('/get_post', methods=['GET', 'POST'])
 def get_post_page():
     return "It works"
+
+
+@app.route('/process', methods=['POST'])
+def process():
+    name = request.form['name']
+    comment = request.form['comment']
+    return f'Name is {name} and the comment is {comment}!'
 
 
 if __name__ == '__main__':
