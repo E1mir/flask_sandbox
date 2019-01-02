@@ -1,13 +1,13 @@
-from flask import Flask
 from flask import render_template
 from flask import request
 
-app = Flask(__name__)
+from app_conf import app
 
 
 @app.route('/')
 def index():
-    return render_template('project/index.html', title='Index page', page='index')
+    comments = []
+    return render_template('project/index.html', title='Index page', page='index', comments=comments)
 
 
 @app.route('/add_comment')
