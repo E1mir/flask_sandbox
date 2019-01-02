@@ -2,11 +2,12 @@ from flask import render_template
 from flask import request
 
 from app_conf import app
+from models import Comment
 
 
 @app.route('/')
 def index():
-    comments = []
+    comments = Comment.query.all()
     return render_template('project/index.html', title='Index page', page='index', comments=comments)
 
 
